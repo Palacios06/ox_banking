@@ -8,7 +8,7 @@ onClientCallback('ox_banking:getAccounts', async (playerId): Promise<Account[]> 
 
   if (!player) return;
 
-  const accessAccounts = await player.getAccounts();
+  const accessAccounts = await player.getAccounts(true);
 
   const accounts: Account[] = accessAccounts.map((account) => ({
     group: account.group,
@@ -137,7 +137,7 @@ onClientCallback('ox_banking:getDashboardData', async (playerId): Promise<Dashbo
     }[]
   >(
     `
-    SELECT amount, DATE_FORMAT(date, '%Y-%m-%d %H:00') as date, toId, fromId, message
+    SELECT amount, DATE_FORMAT(date, '%Y-%m-%d') as date, toId, fromId, message
     FROM accounts_transactions
     WHERE toId = ? OR fromId = ?
     ORDER BY date DESC
