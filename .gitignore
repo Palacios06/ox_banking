@@ -1,6 +1,4 @@
 node_modules
-/dist
-/fxmanifest.lua
 /.yarn.installed
 .idea
 bun.lockb
